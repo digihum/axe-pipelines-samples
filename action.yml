@@ -1,10 +1,5 @@
 name: "axe selenium webdriver"
 
-inputs:
-  static-site-dir:
-      description: 'Folder containing website content.'
-      required: false
-
 runs:
   using: ubuntu-latest
     steps:
