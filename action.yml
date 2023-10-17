@@ -1,8 +1,12 @@
 name: "axe selenium webdriver"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+inputs:
+  static-site-dir:
+      description: 'Folder containing website content.'
+      required: false
+
+runs:
+  using: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
