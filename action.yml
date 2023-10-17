@@ -6,31 +6,31 @@ inputs:
       required: false
 
 runs:
-  using: composite
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+  using: 'composite'
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: Install Dependencies
-        shell: bash
-        run: |
-          yarn install --frozen-lockfile
-        working-directory: ./typescript-selenium-webdriver-sample
+    - name: Install Dependencies
+      shell: bash
+      run: |
+        yarn install --frozen-lockfile
+      working-directory: ./typescript-selenium-webdriver-sample
 
-      - name: Run Tests
-        shell: bash
-        run: |
-          yarn test --ci
-        working-directory: ./typescript-selenium-webdriver-sample
+    - name: Run Tests
+      shell: bash
+      run: |
+        yarn test --ci
+      working-directory: ./typescript-selenium-webdriver-sample
 
-      - name: Publish Test Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: ./typescript-selenium-webdriver-sample/test-results/junit.xml
+    - name: Publish Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: ./typescript-selenium-webdriver-sample/test-results/junit.xml
 
-      - name: Publish Sarif Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: CodeAnalysisLogs
-          path: ./typescript-selenium-webdriver-sample/test-results
+    - name: Publish Sarif Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: CodeAnalysisLogs
+        path: ./typescript-selenium-webdriver-sample/test-results
