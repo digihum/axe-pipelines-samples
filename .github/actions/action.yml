@@ -1,4 +1,4 @@
-name: axe
+name: "axe selenium webdriver"
 
 jobs:
   build:
