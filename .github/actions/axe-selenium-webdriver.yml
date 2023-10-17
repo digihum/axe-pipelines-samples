@@ -1,0 +1,35 @@
+name: axe
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install Dependencies
+        run: |
+          yarn install --frozen-lockfile
+        working-directory: ./typescript-selenium-webdriver-sample
+
+      - name: Run Tests
+        run: |
+          yarn test --ci
+        working-directory: ./typescript-selenium-webdriver-sample
+
+      - name: Publish Test Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: ./typescript-selenium-webdriver-sample/test-results/junit.xml
+
+      - name: Publish Sarif Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: CodeAnalysisLogs
+          path: ./typescript-selenium-webdriver-sample/test-results
