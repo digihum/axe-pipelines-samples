@@ -2,6 +2,7 @@ name: "axe selenium webdriver"
 
 runs:
   using: ubuntu-latest
+  
   steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -12,11 +13,13 @@ runs:
         node-version: '16'
 
     - name: Install Dependencies
+      shell: bash
       run: |
         yarn install --frozen-lockfile
       working-directory: ./typescript-selenium-webdriver-sample
 
     - name: Run Tests
+      shell: bash
       run: |
         yarn test --ci
       working-directory: ./typescript-selenium-webdriver-sample
